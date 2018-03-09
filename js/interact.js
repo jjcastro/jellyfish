@@ -11,6 +11,8 @@ var tzOffs = 0;
 
 var mouseXY = V3.$(0,0,0);
 
+
+// INTERACCIÓN, MOVIMIENTOS DEL MOUSE
 function interact(){
   canvas.onmousedown = function ( ev ){
     drag  = 1;

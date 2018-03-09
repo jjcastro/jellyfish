@@ -1,6 +1,10 @@
 var localParam = new LocalParam();
 var Param = new Param();
 
+
+// OBJETO GLOBAL DE PARÁMETROS
+// - MOVIMIENTOS Y ROTACIONES DE CÁMARA
+// - TIEMPOS Y FPS
 function LocalParam(){
   this.camera = new Object;
   this.camera.near = 5;
@@ -22,6 +26,9 @@ function LocalParam(){
   this.cycle32 = 0.0;
 }
 
+// PARÁMETROS GLOBALES CONTROLADOS POR EL USUARIO.
+// DE ESTA MANERA, SE PUEDEN REFERIR A ESTE OBJETO
+// DESDE TODOS LOS DEMÁS MÓDULOS
 function Param(){
 
   //jellyfish
@@ -34,6 +41,7 @@ function Param(){
 
 }
 
+// VALORES PARA DEPURAR
 function setDebugParam(){
   $("#jCount").val(Param.jCount);
   $("#jScale").val(Param.jScale);

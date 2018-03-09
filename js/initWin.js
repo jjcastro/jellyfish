@@ -21,10 +21,12 @@ function initWin(w,h){
   }
 }
 
+// CUANDO SE CAMBIA EL TAMAÑO, SE RECONFIGURA EL CANVAS
 $(window).resize(function() {
   initWin();
 });
 
+// PUNTO DE INICIO DE LA APLICACIÓN
 function webGLStart() {
   canvas = document.getElementById("webgl-canvas");
 

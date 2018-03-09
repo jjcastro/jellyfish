@@ -1,3 +1,5 @@
+
+// VECTORES (CON V3 EN MJS.JS)
 var delta = new V3.$(0,0,0);
 var deltaNorm = new V3.$(0,0,0);
 var force = new V3.$(0,0,0);
@@ -8,6 +10,8 @@ var jellyfish = {};
 jellyfish.count = 0;
 jellyfish.order = [];
 
+// ANIMA LAS TRANSICIONES CUANDO SE CAMBIAN 
+// LOS VALORES DE LAS VARIABLES GLOBALES
 function interpolateTargets(){
   while(jellyfish.count != jellyfishTargets.count){
     if(jellyfish.count<jellyfishTargets.count){
@@ -40,6 +44,7 @@ function interpolateTargets(){
   }
 }
 
+// DIBUJAR TODAS LAS MEDUSAS
 function drawJellyfish(){
   interpolateTargets();
   setMatrixUniforms();

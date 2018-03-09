@@ -11,6 +11,8 @@ var joint2 = new M4x4.$();
 var joint3 = new M4x4.$();
 var joint0InvTranspose = new M4x4.$();
 
+// MATRICES Y TIEMPOS UNIFORMES
+
 function setTimeUniform(time){
   gl.uniform1f(currentProgram.currentTime, time);
 }

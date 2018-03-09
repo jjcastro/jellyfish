@@ -4,6 +4,7 @@ jellyfishTargets.count = 0;
 jellyfishTargets.order = [];
 jellyfishTargets.order3D = [];
 
+// VARIABLES "GLOBALES" Y TIEMPO/VELOCIDAD ALEATORIOS
 JellyfishTarget = function(tx,ty,tz,scl,id,time){
   this.pos = V3.$(tx,ty,tz);
   this.scl = scl;
@@ -19,6 +20,7 @@ var dir;
 var force;
 var s1,s2;
 
+// SIMULACIÓN DE MOVIMIENTO DE CADA UNA DE LAS MEDUSAS
 function simulate(){
   var serverTime = new Date();
   var serverMilis = serverTime.getTime()%100000000/1000;
@@ -51,10 +53,10 @@ function simulate(){
 
   for(var i=0; i < jellyfishTargets.count; i++){
 
-    //SET TIME
+    // TIEMPO
     jellyfishTargets[i].time += (Param.jSpeed*16/(jellyfishTargets[i].scl+1))*jellyfishTargets[i].speed;
 
-    //MOVE
+    // MOVER
     var time = new Date().getTime();
     var speed = jellyfishTargets[i].scl*Param.jSpeed*2.8;
     var flow = V3.$(
@@ -65,7 +67,8 @@ function simulate(){
 
     V3.add(jellyfishTargets[i].pos, flow, jellyfishTargets[i].pos);
 
-    //REPEL
+    // CALCULAR LA POSICIÓN DE TODAS LAS MEDUSAS
+    // Y ALEJAR ESTA UN POCO DE TODAS LAS DEMÁS
     for(var j=0; j < jellyfishTargets.count; j++){
       if (i != j){
         s1 = jellyfishTargets[i].scl*4;
@@ -85,7 +88,7 @@ function simulate(){
       }
     }
 
-    //CENTER
+    // SE CENTRAN DE NUEVO PARA QUE NO SE ALEJEN DEMASIADO
     jellyfishTargets[i].pos[0] *= 0.995;
     jellyfishTargets[i].pos[1] *= 0.995;
     jellyfishTargets[i].pos[2] *= 0.995;

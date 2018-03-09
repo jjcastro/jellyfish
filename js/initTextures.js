@@ -2,6 +2,7 @@
 var texture = {};
 var textureOK = {};
 
+// INICIALIZAR TEXTURAS
 function initTextures() {
   loadTexture('jellyfish', 'images/jellyfish.png');
   loadTexture('luminescence', 'images/luminescence.png');
@@ -11,6 +12,7 @@ function initTextures() {
   }
 }
 
+// CARGAR TEXTURAS
 function loadTexture(label, path) {
   textureOK[label] = 0;
   var imageFile = new Image();
@@ -22,6 +24,7 @@ function loadTexture(label, path) {
   }
 }
 
+// TEXTURAS CARGADAS
 function handleLoadedTexture(textures, label) {
   gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
   gl.bindTexture(gl.TEXTURE_2D, textures);
@@ -33,6 +36,7 @@ function handleLoadedTexture(textures, label) {
   textureOK[label] = 1;
 }
 
+// ACTIVAR TEXTURAS
 function bindTexture(name, i) {
   if(textureOK[name] == 1){
     if (i==0) gl.activeTexture(gl.TEXTURE0);
@@ -43,6 +47,8 @@ function bindTexture(name, i) {
   }
 }
 
+// PONE UN CERO DE MÁS SI EL NÚMERO ES MENOR A 10
+// PARA CARGAR LA TEXTURA APROPIADA
 function pad2(number) {
   return (parseInt(number) < 10 ? '0' : '') + parseInt(number)
 }
