@@ -14,11 +14,13 @@ function getCurrentTime() {
   $("#frameRate").text(pad2(localParam.fpsAverage));
 }
 
+// Tick
 function tick(){
   getCurrentTime();
   setTimeUniform(localParam.currentTime);
 }
 
+// Función principal de animación
 function animate(){
         requestAnimFrame( animate );
         tick();

@@ -29,6 +29,7 @@ function simulate(){
   serverTime.seconds = serverTime.getSeconds();
   serverTime.total = serverTime.hours*3600 + serverTime.minutes*60 + serverTime.seconds;
 
+  // AGREGA A JELLYFISH TARGETS (SI EL USUARIO LOS AGREGA)
   var i = 0;
   if(jellyfishTargets.count<Param.jCount){
     jellyfishTargets[jellyfishTargets.count] = new JellyfishTarget(
@@ -43,7 +44,7 @@ function simulate(){
     jellyfishTargets.order3D.push([jellyfishTargets.count,0]);
     jellyfishTargets.count += 1;
     i++;
-  }
+  } // ELIMINA A JELLYFISH TARGETS (SI EL USUARIO LOS DISMINUYE)
   else if(jellyfishTargets.count>Param.jCount){
     jellyfishTargets.order3D.pop();
     jellyfishTargets.order.pop();

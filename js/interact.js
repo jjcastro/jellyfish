@@ -14,7 +14,9 @@ var mouseXY = V3.$(0,0,0);
 
 // INTERACCIÓN, MOVIMIENTOS DEL MOUSE
 function interact(){
+  // Click
   canvas.onmousedown = function ( ev ){
+    // Enciende el drag (empezar a mover)
     drag  = 1;
     rxOffs = ev.clientX/100 - localParam.camera.rotate[1];
     ryOffs = ev.clientY/100 - localParam.camera.rotate[0];
@@ -22,7 +24,9 @@ function interact(){
     tyOffs = +ev.clientY/10 - localParam.camera.translate[1];
     tzOffs = +ev.clientY/10 +ev.clientX/10 - localParam.camera.translate[2];
   }
+  // Levantar click
   canvas.onmouseup = function ( ev ){
+    // Apaga el drag
     drag  = 0;
     rxOffs = ev.clientX/100;
     ryOffs = ev.clientY/100;
@@ -30,6 +34,8 @@ function interact(){
     tyOffs = +ev.clientY/10;
     tzOffs = +ev.clientY/10 +ev.clientX/10;
   }
+  // Si se usa ALT, se aleja y si se usa SHIFT, se mueve
+  // Mover mouse
   canvas.onmousemove = function ( ev ){
 
    if ( drag == 0 ) return;

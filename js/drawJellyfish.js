@@ -10,8 +10,7 @@ var jellyfish = {};
 jellyfish.count = 0;
 jellyfish.order = [];
 
-// ANIMA LAS TRANSICIONES CUANDO SE CAMBIAN 
-// LOS VALORES DE LAS VARIABLES GLOBALES
+// ANIMA LAS TRANSICIONES
 function interpolateTargets(){
   while(jellyfish.count != jellyfishTargets.count){
     if(jellyfish.count<jellyfishTargets.count){
@@ -51,6 +50,8 @@ function drawJellyfish(){
   bindTexture('jellyfish', 0);
   bindTexture('luminescence', 2);
   bindTexture('caustics'+localParam.cycle32, 1);
+  // Organiza las medusas en orden de cuál está más al frente
+  // (más cerca de la cámara)
   jellyfish.order.sort(sort3D);
   for (var i=0; i < jellyfish.count; i++) {
     var k = jellyfish.order[i][0];
@@ -62,11 +63,14 @@ function drawJellyfish(){
   }
 }
 
+// Parámetro para [].sort()
 function sort3D(a,b){
   var eye = V3.$(-localParam.camera.eye[0],-localParam.camera.eye[1]+20,-localParam.camera.eye[2]);
   return (V3.length(V3.sub(eye,a[1])) > V3.length(V3.sub(eye,b[1])) ? -1 : ((V3.length(V3.sub(eye,a[1])) < V3.length(V3.sub(eye,b[1]))) ? 1 : 0));
 }
 
+
+// Instancia de Jellyfish
 function JellyfishInstance(pos,scl,time){
   this.pos = pos;
   this.scl = scl;
@@ -126,7 +130,6 @@ function JellyfishInstance(pos,scl,time){
       }
     }
   }
-
 }
 
 function Spring3D(xpos, ypos, zpos){
